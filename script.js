@@ -1,3 +1,5 @@
+var time = 1
+
 var characters = {
     "district1": {
         "male": {
@@ -265,7 +267,7 @@ function setStatus(type) {
         } else {
             document.getElementById('status_D' + district + '_kills_female').innerText = characters["district" + district].female.kills + " Kill(s)"
         }
-        
+
 
         // Sets Male/Female Status
 
@@ -420,11 +422,99 @@ function decide(type) {
         }
 
 
+    } else if (type == "day") {
+
+        // DONT HAVE ITEM
+        // 0: Do something Random (at location)
+        // 1: Kill (at same location)
+        // 2: Lose Sanity
+
+        // DOES HAVE ITEM
+        // 0: Do something Random (at location)
+        // 1: Kill (at same location)
+        // 2: Use Item (if they have an item)
+        // 3: Lose Sanity
+
+        var aliveplayers = []
+
+        for (district = 1; district <= 12; district++) {
+
+            if (characters["district" + district].male.alive == true) {
+                var list = []
+                list.push(district)
+                list.push("male")
+                aliveplayers.push(list)
+            }
+            if (characters["district" + district].female.alive == true) {
+                var list = []
+                list.push(district)
+                list.push("female")
+                aliveplayers.push(list)
+            }
+        }
+
+        var plr = aliveplayers[Math.floor(Math.random() * aliveplayers.length)]
+        var person = characters["district" + plr[0]][plr[1]]
+        var name = person.name
+
+        var types_random_forest = [
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> travels to higher ground in the forest.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> explores their surroundings.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> explores the arena.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> questions their sanity.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> skinned their knee going down a hill.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> is feeling lonely.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> tries sleeping through the whole day.`,
+            `<font color="#FB8200" style="font-weight: bold;">${name}</font> discovers a cave and decides to go in for the night.`,
+        ]
+
+        if (person.inventory.length > 0) {
+            
+            var array = [0,1,2,3]
+            const random = array[Math.floor(Math.random() * array.length)];
+
+            if (random == 0) {
+
+                if (person.location == "forest") {
+                    var string = types_random_forest[Math.floor(Math.random() * types_random.length)]
+                    if (string == `<font color="#FB8200" style="font-weight: bold;">${name}</font> discovers a cave and decides to go in for the night.`) {
+                        person.location = "cave"
+                    }
+                }
+                
+                return string
+
+            } else {
+                return "NOTRH"
+            }
+
+        } else {
+            
+            var array = [0,1,2]
+            const random = array[Math.floor(Math.random() * array.length)];
+
+            if (random == 0) {
+
+                if (person.location == "forest") {
+                    var string = types_random_forest[Math.floor(Math.random() * types_random.length)]
+                    if (string == `<font color="#FB8200" style="font-weight: bold;">${name}</font> discovers a cave and decides to go in for the night.`) {
+                        person.location = "cave"
+                    }
+                }
+                
+                return string
+            } else {
+                return "NOTRH"
+            }
+
+        }
+
     }
 }
 
 function startBloodbath() {
-    var array = [10, 11, 12, 13, 14, 15]
+    document.getElementsByClassName('statusTitle')[0].innerText = "The Bloodbath"
+    var array = [13, 14, 15, 16, 17, 18]
     const times = array[Math.floor(Math.random() * array.length)];
 
     document.getElementById('status').style.display = "none"
@@ -492,4 +582,35 @@ function showPersonDetail(district, gender) {
 function backtoBloodbath() {
     document.getElementById('bloodbath').style.display = "block"
     document.getElementById('status').style.display = "none"
+}
+
+function startDay() {
+
+    var array = [16, 17, 18, 19, 20]
+    const times = array[Math.floor(Math.random() * array.length)];
+
+    for (i = 0; i <= times; i++) {
+        var text = decide("day")
+
+        if (text == "") { } else {
+            var paragraph = document.createElement('p')
+            paragraph.innerHTML = text
+            paragraph.style.color = "white"
+
+            document.getElementById('normalContent').append(paragraph)
+        }
+
+    }
+
+    document.getElementById('normalStatus').style.display = "block"
+
+}
+
+function continueGame() {
+    if (document.getElementsByClassName('statusTitle')[0].innerText == "The Bloodbath") {
+        document.getElementById('bloodbath').style.display = "none"
+        document.getElementById('normal').style.display = "block"
+        document.getElementsByClassName('statusTitle')[0].innerText = "Day " + time
+        startDay()
+    }
 }
