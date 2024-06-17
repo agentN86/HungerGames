@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunger Games Simulator</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
+</head>
+<body align="middle">
+    <h1 style="color: white;">Hunger Games Simulator</h1>
+    <div id="seasonHolder">
+        <div id="title">The Hunger Games</div>
+    </div>
+    <div id="seasonHolder">
+        <div id="title" class="statusTitle">Disclaimer</div>
+    </div>
+    <br>
+    <div id="disclaimer" align="middle">
+        <div style="width: 680px; text-align: center;">
+            <p style="color: white;">The Hunger Games Simulator contains depictions of fictional violence and survival scenarios that may not be suitable for all audiences. The content is intended for entertainment purposes and should not be taken as a reflection of real-life behavior. Viewer discretion is advised, especially for younger audiences or those sensitive to violent themes.</p>
+            <p style="color: white;">This simulator is based of the Hunger Game franchise, originating from Suzanne Collins' book series. This is a non-profit game, purely fan-made.</p>
+            <br>
+            <a onclick="readDisclaimer()">I have read and understand these terms.</a>
+        </div>
+    </div>
+    <div id="status" style="display: none;">
+        <table class="tribute">
+            <tbody>
+                <tr>
+                    <!-- District Names -->
+                    <td valign="top" colspan="2" class="district">District 1</td>
+                    <td valign="top" colspan="2" class="district">District 2</td>
+                    <td valign="top" colspan="2" class="district">District 3</td>
+                </tr>
+                <tr>
+                    <!-- Images -->
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D1_image_male" onclick="showPersonDetail(1, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D1_image_female" onclick="showPersonDetail(1, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D2_image_male" onclick="showPersonDetail(2, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D2_image_female" onclick="showPersonDetail(2, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D3_image_male" onclick="showPersonDetail(3, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D3_image_female" onclick="showPersonDetail(3, 'female')" style="cursor: pointer;">
+                     </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <p1 id="status_D1_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D1_status_male"></font>
+                        <br>
+                        <p1 id="status_D1_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D1_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D1_status_female"></font>
+                        <br>
+                        <p1 id="status_D1_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D2_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D2_status_male"></font>
+                        <br>
+                        <p1 id="status_D2_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D2_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D2_status_female"></font>
+                        <br>
+                        <p1 id="status_D2_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D3_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D3_status_male"></font>
+                        <br>
+                        <p1 id="status_D3_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D3_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D3_status_female"></font>
+                        <br>
+                        <p1 id="status_D3_kills_female"></p1>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tribute">
+            <tbody>
+                <tr>
+                    <!-- District Names -->
+                    <td valign="top" colspan="2" class="district">District 4</td>
+                    <td valign="top" colspan="2" class="district">District 5</td>
+                    <td valign="top" colspan="2" class="district">District 6</td>
+                </tr>
+                <tr>
+                    <!-- Images -->
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D4_image_male" onclick="showPersonDetail(4, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D4_image_female" onclick="showPersonDetail(4, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D5_image_male" onclick="showPersonDetail(5, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D5_image_female" onclick="showPersonDetail(5, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D6_image_male" onclick="showPersonDetail(6, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D6_image_female" onclick="showPersonDetail(6, 'female')" style="cursor: pointer;">
+                     </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <p1 id="status_D4_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D4_status_male"></font>
+                        <br>
+                        <p1 id="status_D4_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D4_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D4_status_female"></font>
+                        <br>
+                        <p1 id="status_D4_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D5_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D5_status_male"></font>
+                        <br>
+                        <p1 id="status_D5_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D5_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D5_status_female"></font>
+                        <br>
+                        <p1 id="status_D5_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D6_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D6_status_male"></font>
+                        <br>
+                        <p1 id="status_D6_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D6_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D6_status_female"></font>
+                        <br>
+                        <p1 id="status_D6_kills_female"></p1>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tribute">
+            <tbody>
+                <tr>
+                    <!-- District Names -->
+                    <td valign="top" colspan="2" class="district">District 7</td>
+                    <td valign="top" colspan="2" class="district">District 8</td>
+                    <td valign="top" colspan="2" class="district">District 9</td>
+                </tr>
+                <tr>
+                    <!-- Images -->
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D7_image_male" onclick="showPersonDetail(7, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D7_image_female" onclick="showPersonDetail(7, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D8_image_male" onclick="showPersonDetail(8, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D8_image_female" onclick="showPersonDetail(8, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D9_image_male" onclick="showPersonDetail(9, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D9_image_female" onclick="showPersonDetail(9, 'female')" style="cursor: pointer;">
+                     </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <p1 id="status_D7_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D7_status_male"></font>
+                        <br>
+                        <p1 id="status_D7_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D7_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D7_status_female"></font>
+                        <br>
+                        <p1 id="status_D7_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D8_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D8_status_male"></font>
+                        <br>
+                        <p1 id="status_D8_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D8_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D8_status_female"></font>
+                        <br>
+                        <p1 id="status_D8_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D9_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D9_status_male"></font>
+                        <br>
+                        <p1 id="status_D9_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D9_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D9_status_female"></font>
+                        <br>
+                        <p1 id="status_D9_kills_female"></p1>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tribute">
+            <tbody>
+                <tr>
+                    <!-- District Names -->
+                    <td valign="top" colspan="2" class="district">District 10</td>
+                    <td valign="top" colspan="2" class="district">District 11</td>
+                    <td valign="top" colspan="2" class="district">District 12</td>
+                </tr>
+                <tr>
+                    <!-- Images -->
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D10_image_male" onclick="showPersonDetail(10, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D10_image_female" onclick="showPersonDetail(10, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D11_image_male" onclick="showPersonDetail(11, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D11_image_female" onclick="showPersonDetail(11, 'female')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D12_image_male" onclick="showPersonDetail(12, 'male')" style="cursor: pointer;">
+                     </td>
+                     <td valign="top">
+                        <img src="" height="90" width="90" draggable="false" id="status_D12_image_female" onclick="showPersonDetail(12, 'female')" style="cursor: pointer;">
+                     </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <p1 id="status_D10_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D10_status_male"></font>
+                        <br>
+                        <p1 id="status_D10_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D10_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D10_status_female"></font>
+                        <br>
+                        <p1 id="status_D10_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D11_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D11_status_male"></font>
+                        <br>
+                        <p1 id="status_D11_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D11_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D11_status_female"></font>
+                        <br>
+                        <p1 id="status_D11_kills_female"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D12_name_male"></p1>
+                        <br>
+                        <font color="" id="status_D12_status_male"></font>
+                        <br>
+                        <p1 id="status_D12_kills_male"></p1>
+                    </td>
+                    <td valign="top">
+                        <p1 id="status_D12_name_female"></p1>
+                        <br>
+                        <font color="" id="status_D12_status_female"></font>
+                        <br>
+                        <p1 id="status_D12_kills_female"></p1>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a onclick="startBloodbath()" id="startbloodbath">Proceed.</a>
+        <div id="backtoBloodbath" style="display:none;"> <a onclick="backtoBloodbath()">Go back to Bloodbath.</a></div>
+    </div>
+    <div id="bloodbath" style="display: none;">
+        <p style="color: white;">As the tributes stand on their podiums, the horn sounds.</p>
+        <div id="bloodbathContent">
+
+        </div>
+        <div><br><a onclick="setStatus('bloodbath')" style="display:none;" id="bloodbathStatus">See everyone's status.</a><br><a onclick="backtoBloodbath()">Proceed.</a></div>
+    </div>
+    <div id="normal" style="display: none;">
+        <div id="normalContent">
+
+        </div>
+        <div><br><a onclick="setStatus('bloodbath')" style="display:none;" id="bloodbathStatus">See everyone's status.</a><br><a onclick="backtoBloodbath()">Proceed.</a></div>
+    </div>
+    <dialog id="personDetailed" align="middle">
+        <h2>Detailed Information</h2>
+        <p><b>Name: </b><span id="personDetailed_Name"></span></p>
+        <p><b>Inventory: </b><span id="personDetailed_Inv"></span></p>
+        <p><b>Killed Victims: </b><span id="personDetailed_Vict"></span></p>
+        <br>
+        <button onclick="document.getElementById('personDetailed').close()" style="cursor: pointer;">Close</button>
+    </dialog>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+    background: #5d5050;
+    font: 14px Arial;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+table.tribute {
+    table-layout: fixed;
+    width: 650px;
+    background-color: #5d5050;
+    border: 1px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: arial;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+table.tribute td.district {
+    font-size: 16px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+img {
+    height: 90px;
+    width: 90px;
+    border: 1px solid #000;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+img.dead {
+    filter: grayscale(1)
+}
+
+#seasonHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+#title {
+    text-align: center;
+    border: 1px solid #fff;
+    background: #232323;
+    color: #ffcf27;
+    display: inline-block;
+    padding: 5px;
+}
+
+a {
+    color: #71f3ff;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
